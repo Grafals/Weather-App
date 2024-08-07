@@ -7,23 +7,42 @@ body, h1, p {
 
 /* Basic styling for the body */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #0d1117;
-    color: #c9d1d9;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    color: #fff;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     height: 100vh;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden; /* Remove horizontal scroll bar */
 }
 
+/* Styling for the header */
+header {
+    background-color: #1e1e2e;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    color: #fff;
+    animation: headerAnimation 2s ease-in-out infinite alternate;
+}
+
+/* Container styling */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
-    animation: fadeIn 2s ease-in-out;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
 }
 
 /* Styling for the form */
@@ -31,134 +50,185 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #161b22;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    width: 350px;
-    transform: scale(0.9);
-    animation: scaleUp 1s ease-in-out forwards;
+    width: 100%;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+    animation: formFadeIn 2s ease-in-out;
 }
 
 .cityInput {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #30363d;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 18px;
-    background-color: #21262d;
-    color: #c9d1d9;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #2ecc71;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
 .cityInput:focus {
-    border-color: #58a6ff;
-    box-shadow: 0 0 8px rgba(88, 166, 255, 0.8);
+    border-color: #3498db;
 }
 
 button {
-    background-color: #238636;
+    background-color: #1e1e2e;
     color: #fff;
     border: none;
-    border-radius: 8px;
-    padding: 12px 24px;
+    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #2ea043;
-    transform: scale(1.05);
+    background-color: #2ecc71;
+}
+
+/* Weather container styling */
+.weatherContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    animation: containerFadeIn 2s ease-in-out;
 }
 
 /* Styling for the weather card */
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #161b22;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    width: 350px;
+    width: 100%;
+    max-width: 600px;
     text-align: center;
-    font-size: 20px;
-    margin-top: 20px;
-    opacity: 0;
-    animation: fadeIn 1s ease-in-out forwards;
+    font-size: 18px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    animation: cardSlideIn 2s ease-in-out;
 }
 
-.cityDisplay {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    animation: slideIn 1s ease-in-out forwards;
-}
-
-.tempDisplay, .humidityDisplay, .descDisplay, .weatherEmoji, .windDisplay, .pressureDisplay, .cloudsDisplay, .feelsLikeDisplay {
+.cityDisplay, .tempDisplay, .descDisplay, .weatherEmoji {
     margin: 10px 0;
-    animation: fadeIn 2s ease-in-out forwards;
 }
 
 .weatherEmoji {
-    font-size: 50px;
-    animation: bounce 2s infinite;
+    font-size: 40px;
 }
 
-.errorDisplay {
-    color: #e74c3c;
-    font-weight: bold;
-    margin: 15px 0;
-    animation: shake 0.5s ease-in-out;
+/* Styling for the forecast */
+.forecast {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
 }
 
-/* Keyframes for animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.forecastTitle {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #fff;
 }
 
-@keyframes scaleUp {
-    from {
-        transform: scale(0.9);
-    }
-    to {
-        transform: scale(1);
-    }
+.forecastHourly, .forecastDaily {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #3498db #2ecc71;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-    }
-    to {
-        transform: translateY(0);
-    }
+.forecastHourly {
+    margin-bottom: 20px;
 }
 
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+.forecastItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    animation: forecastItemFadeIn 2s ease-in-out;
 }
 
-@keyframes shake {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    25%, 75% {
-        transform: translateX(-10px);
-    }
-    50% {
-        transform: translateX(10px);
-    }
+.dateDisplay, .tempDisplay, .descDisplay, .weatherEmoji {
+    margin: 5px 0;
+}
+
+/* Custom scrollbar for forecast */
+.forecastHourly::-webkit-scrollbar, .forecastDaily::-webkit-scrollbar {
+    height: 8px;
+}
+
+.forecastHourly::-webkit-scrollbar-thumb, .forecastDaily::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    border-radius: 10px;
+}
+
+.forecastHourly::-webkit-scrollbar-track, .forecastDaily::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+/* Styling for the footer */
+footer {
+    background-color: #1e1e2e;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    animation: footerFadeIn 2s ease-in-out;
+}
+
+footer p {
+    color: #fff;
+}
+
+/* Animations */
+@keyframes headerAnimation {
+    0% { color: #3498db; }
+    100% { color: #2ecc71; }
+}
+
+@keyframes formFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes containerFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardSlideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes forecastItemFadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes footerFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
